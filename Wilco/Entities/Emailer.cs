@@ -4,7 +4,7 @@ namespace Wilco;
 
 public class Emailer
 {
-	public bool FormatAsHTML { get; set; } = false;
+	public bool FormatAsHtml { get; set; } = false;
 	public string From { get; set; } = "noreply@wilco.org";
 	public string MailServer { get; } = "relay.wilco.org";
 	public string Message { get; set; } = "Too lazy to write a message";
@@ -27,7 +27,7 @@ public class Emailer
 		mm.Body = Message;
 		mm.From = new MailAddress(From);
 		mm.Subject = Subject;
-		mm.IsBodyHtml = FormatAsHTML;
+		mm.IsBodyHtml = FormatAsHtml;
 
 		Recipients.ToList().ForEach(r => mm.To.Add(r));
 
