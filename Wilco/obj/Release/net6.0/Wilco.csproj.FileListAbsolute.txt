@@ -1,0 +1,12 @@
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\bin\Release\net6.0\Wilco.deps.json
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\bin\Release\net6.0\Wilco.dll
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\bin\Release\net6.0\Wilco.pdb
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\obj\Release\net6.0\Wilco.csproj.AssemblyReference.cache
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\obj\Release\net6.0\Wilco.GeneratedMSBuildEditorConfig.editorconfig
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\obj\Release\net6.0\Wilco.AssemblyInfoInputs.cache
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\obj\Release\net6.0\Wilco.AssemblyInfo.cs
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\obj\Release\net6.0\Wilco.csproj.CoreCompileInputs.cache
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\obj\Release\net6.0\Wilco.dll
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\obj\Release\net6.0\refint\Wilco.dll
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\obj\Release\net6.0\Wilco.pdb
+C:\VS\source\DEMS\LIBRARIES\Wilco-Common\Wilco\obj\Release\net6.0\ref\Wilco.dll

@@ -1,4 +1,4 @@
-﻿namespace Wilco.NET6;
+﻿namespace Wilco;
 
 public static class NumberExtensions
 {
