@@ -18,7 +18,7 @@ public static class IOExtensions
 	public static string GetSha256Checksum(this FileInfo file)
 	{
 		using var stream = new BufferedStream(File.OpenRead(file.FullName), 10 * 1000);
-		var sha = new SHA256Managed();
+		var sha = SHA256.Create();
 		var checksum = sha.ComputeHash(stream);
 
 		return BitConverter.ToString(checksum).Replace("-", string.Empty).ToUpper();
@@ -32,7 +32,7 @@ public static class IOExtensions
 	/// <returns>True or false and the total file count.</returns>
 	public static bool HasFiles(this DirectoryInfo directoryInfo, out int fileCount)
 	{
-		fileCount = directoryInfo.GetFiles("*", SearchOption.AllDirectories).Length;
+		fileCount = directoryInfo.GetFiles("*", DirectoryUtils.EnumerationOptionsRecursive).Length;
 
 		return fileCount > 0;
 	}
@@ -57,53 +57,6 @@ public static class IOExtensions
 		});
 
 		return flag;
-	}
-
-	///// <summary>
-	/////     Creates a temp folder and moves current folder.
-	///// </summary>
-	///// <param name="evidenceFolder"></param>
-	///// <returns></returns>
-	//public static DirectoryInfo MoveToTempDirectory(this DirectoryInfo evidenceFolder) => MoveToTempDirectory(evidenceFolder, TempFolderOptions.CreateInSameFolder);
-
-	///// <summary>
-	/////     Creates a temp folder in the agency's evidence folder.
-	///// </summary>
-	///// <param name="evidenceFolder"></param>
-	///// <param name="tempFolderOptions"></param>
-	///// <returns>The directory that was moved to the temp folder.</returns>
-	//public static DirectoryInfo MoveToTempDirectory(this DirectoryInfo evidenceFolder, TempFolderOptions tempFolderOptions)
-	//{
-	//	var tempDirectory = tempFolderOptions == TempFolderOptions.CreateUpOneLevel
-	//		? Path.Combine(evidenceFolder.Parent.Parent.FullName, "!TEMP")
-	//		: Path.Combine(evidenceFolder.FullName, "!TEMP");
-
-	//	if (!Directory.Exists(tempDirectory)) _ = Directory.CreateDirectory(tempDirectory);
-
-	//	evidenceFolder.Attributes &= ~FileAttributes.ReadOnly;
-	//	evidenceFolder.MoveTo(Path.Combine(tempDirectory, evidenceFolder.Name));
-
-	//	return evidenceFolder;
-	//}
-
-	/// <summary>
-	///     Deletes subfolders based on number of days since last modified date.
-	/// </summary>
-	/// <param name="folder"></param>
-	/// <param name="retentionInDays"></param>
-	/// <returns>The number of folders that were deleted.</returns>
-	public static int PurgeSubDirectories(this DirectoryInfo folder, int retentionInDays)
-	{
-		var purgeDate = retentionInDays == -1 ? DateTime.MaxValue : DateTime.Now.AddDays(-retentionInDays);
-		var counter = 0;
-
-		folder.GetDirectories().Where(d => d.LastWriteTime < purgeDate).ToList().ForEach(directory =>
-		{
-			directory.Delete(true);
-			counter++;
-		});
-
-		return counter;
 	}
 
 	private static bool IsLocked(this FileInfo file)

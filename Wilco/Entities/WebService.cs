@@ -6,13 +6,6 @@ namespace Wilco;
 
 public static class WebService
 {
-	public static async Task<string> GetApiToken(string tokenUri, Dictionary<string, string> parameters)
-	{
-		using var client = new HttpClient();
-
-		return await GetApiToken(tokenUri, parameters, client);
-	}
-
 	public static async Task<string> GetApiToken(string tokenUri, Dictionary<string, string> parameters, HttpClient client)
 	{
 		var response = await client.PostAsync(tokenUri, new FormUrlEncodedContent(parameters));

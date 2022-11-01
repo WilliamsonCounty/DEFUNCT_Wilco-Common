@@ -760,17 +760,4 @@ public static class StringExtensions
 
         return sb.ToString();
     }
-
-    public static string Reverse(this string input)
-    {
-        if (input.Length <= 1) return input;
-
-        var chars = input.ToCharArray();
-
-        var output = new StringBuilder();
-
-        for (var i = chars.Length - 1; i == 0; i--) _ = output.Append(chars[i]);
-
-        return output.ToString();
-    }
 }
