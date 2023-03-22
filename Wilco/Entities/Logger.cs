@@ -19,18 +19,22 @@ public class Logger : ILogger
 	private static StringBuilder? ErrorCache;
 	private const string LogFolderName = "LOGS";
 
-	private static readonly string LogName = $"{DateTime.Now:MMddyyyy}.txt";
-	private static readonly string LogPath = Path.Combine(LogFolderPath, LogName);
+	private static string LogName = $"{DateTime.Now:MMddyyyy}.txt";
+	private static string? LogPath;
 
 	public bool AddTimestamp { get; }
 	public bool VerboseErrorOutput { get; }
 	public bool WriteToConsole { get; }
 	public bool WriteToHtml { get; }
 
-	public Logger(bool verboseErrorOutput = false, bool writeToConsole = false, bool writeToHtml = false, bool addTimestamp = true)
+	public Logger(bool verboseErrorOutput = false, bool writeToConsole = false, bool writeToHtml = false, bool addTimestamp = true, string logFileName = "")
 	{
 		(VerboseErrorOutput, WriteToConsole, WriteToHtml, AddTimestamp) = (verboseErrorOutput, writeToConsole, writeToHtml, addTimestamp);
 
+		if (!string.IsNullOrWhiteSpace(logFileName))
+			LogName = logFileName;
+			
+		LogPath = Path.Combine(LogFolderPath, LogName);
 		ErrorCache = new StringBuilder();
 		SemaphoreSlim = new SemaphoreSlim(1, 1);
 

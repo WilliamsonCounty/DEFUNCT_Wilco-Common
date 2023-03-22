@@ -13,8 +13,10 @@ public struct ConnectionString
 	public static void Set(string connectionString) => Value = connectionString;
 
 	public static void Set(string server, string database) =>
-		Value = $"Data Source={server};" + "Connection Timeout=300;" + $"Initial Catalog={database};" + "Integrated Security=SSPI;";
+		_value = $"Data Source={server};" + "Connection Timeout=300;" + $"Initial Catalog={database};" + "Integrated Security=SSPI;";
 
 	public static void Set(string server, string database, string username, string password) =>
-		Value = $"Data Source={server};" + "Connection Timeout=300;" + $"Initial Catalog={database};" + $"User ID={username};" + $"Password='{password}';";
+		_value = $"Data Source={server};" + "Connection Timeout=300;" + $"Initial Catalog={database};" + $"User ID={username};" + $"Password='{password}';";
+
+	public override string ToString() => Value;
 }
