@@ -1,4 +1,6 @@
-﻿namespace Wilco.DataAccess;
+﻿using System;
+
+namespace Wilco.DataAccess;
 
 public struct ConnectionString
 {
